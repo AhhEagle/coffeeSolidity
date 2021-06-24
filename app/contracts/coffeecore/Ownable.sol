@@ -17,7 +17,6 @@ contract Ownable {
     function owner() public view returns (address) {
         return origOwner;
     }
-
     /// Define a function modifier 'onlyOwner'
     modifier onlyOwner() {
         require(isOwner());
