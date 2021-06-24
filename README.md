@@ -37,3 +37,9 @@ npm run dev
 ```
 
 ### Project Rinkeby Details
+Contract: 0xa87D173CbE79BA37c07c397aF926824FC2009b6f
+Transaction hash: 0x485a680723ad7849002d2956dd4fa01c8f99288e6dc14631216e9ecba752d88a
+https://rinkeby.etherscan.io/address/0xa87D173CbE79BA37c07c397aF926824FC2009b6f
+
+
+## UML Diagrams
