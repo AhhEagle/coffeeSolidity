@@ -50,6 +50,14 @@ Sequence Diagram
 
 Activity Diagram
 
+![Activity Diagram](https://user-images.githubusercontent.com/24871973/123317165-98438480-d525-11eb-9c46-445f7ceb272a.png)
+
+
 Class Diagram
 
+![Data Model Diagram](https://user-images.githubusercontent.com/24871973/123309199-86111880-d51c-11eb-862a-410985c42829.png)
+
 State Diagram
+
+![State Daigram](https://user-images.githubusercontent.com/24871973/123317136-9083e000-d525-11eb-9e73-6668d0ef0246.png)
+
