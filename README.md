@@ -45,7 +45,9 @@ https://rinkeby.etherscan.io/address/0xa87D173CbE79BA37c07c397aF926824FC2009b6f
 
 ## UML Diagrams
 Sequence Diagram
+
 <img width="582" alt="SequenceImage" src="https://user-images.githubusercontent.com/24871973/123308854-19961980-d51c-11eb-9203-05444a46a671.png">
+
 Activity Diagram
 
 Class Diagram
