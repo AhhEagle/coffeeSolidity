@@ -11,6 +11,10 @@ The following are the dependencies utilised in this project:
 - web3: "^0.20.0"
 - web3-provider-engine: "^14.1.0"
 
+### Libraries Explanation
+Truffle: Truffle is a development environment, asset pipiline and as well as a testing framework. Truffle was used in this project to compile, test and also deploy my smart contract to rinkeby. 
+Web3: Web3 was used to interact with the rinkeby ethereum nodeUpdat
+
 ### Run the application
 1. Clone the repository using `git clone url`
 2. Change directory to app and install all modules listed using
