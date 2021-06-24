@@ -158,7 +158,7 @@ contract SupplyChain is ConsumerRole, RetailerRole, DistributorRole, Ownable {
   }
 
   // Define a function 'harvestItem' that allows a farmer to mark an item 'Harvested'
-  function harvestItem(uint _upc, address _originFarmerID, string _originFarmName, string _originFarmInformation, string  _originFarmLatitude, string  _originFarmLongitude, string  _productNotes) public 
+  function harvestItem(uint _upc, address _originFarmerID, string _originFarmName, string _originFarmInformation, string  _originFarmLatitude, string  _originFarmLongitude, string  _productNotes) public onlyOwner() 
   {
     // Add the new item as part of Harvest
     items[_upc] = Item({
@@ -186,7 +186,7 @@ contract SupplyChain is ConsumerRole, RetailerRole, DistributorRole, Ownable {
   }
 
   // Define a function 'processtItem' that allows a farmer to mark an item 'Processed'
-  function processItem(uint _upc) public 
+  function processItem(uint _upc) onlyConsumer() public 
   // Call modifier to check if upc has passed previous supply chain stage
   harvested(_upc)
   
@@ -301,7 +301,7 @@ contract SupplyChain is ConsumerRole, RetailerRole, DistributorRole, Ownable {
     {
     // Update the appropriate fields - ownerID, consumerID, itemState
     items[_upc].ownerID = msg.sender;
-    items[_upc].retailerID = msg.sender;
+    items[_upc].consumerID = msg.sender;
     items[_upc].itemState = State.Purchased;
     // Emit the appropriate event
     emit Purchased(_upc);
