@@ -2,13 +2,14 @@
 This is a udacity nanodegree project that aims at tracking the coffee supply from planting to the enventual consumption by the consumer
 
 ### Dependencies 
-Solidity: 0.4.25
-openzeppelin-solidity: "^2.1.2"
-truffle: "^5.0.1"
-truffle-assertions: "^0.9.2"
-truffle-hdwallet-provider: "^1.0.2"
-web3: "^0.20.0"
-web3-provider-engine: "^14.1.0"
+The following are the dependencies utilised in this project:
+- Solidity: 0.4.25
+- openzeppelin-solidity: "^2.1.2"
+- truffle: "^5.0.1"
+- truffle-assertions: "^0.9.2"
+- truffle-hdwallet-provider: "^1.0.2"
+- web3: "^0.20.0"
+- web3-provider-engine: "^14.1.0"
 
 ### Run the application
 1. Clone the repository using `git clone url`
@@ -43,3 +44,10 @@ https://rinkeby.etherscan.io/address/0xa87D173CbE79BA37c07c397aF926824FC2009b6f
 
 
 ## UML Diagrams
+Sequence Diagram
+
+Activity Diagram
+
+Class Diagram
+
+State Diagram
