@@ -14,7 +14,8 @@ contract('SupplyChain', function(accounts) {
     const originFarmLongitude = "144.341490"
     var productID = sku + upc
     const productNotes = "Best beans for Espresso"
-    const productPrice = web3.toWei(1, "ether")
+    //const productPrice = web3.utils.toWei(1, "ether")
+    const productPrice = '1000000000000000000';
     var itemState = 0
     const distributorID = accounts[2]
     const retailerID = accounts[3]
@@ -46,13 +47,13 @@ contract('SupplyChain', function(accounts) {
         const supplyChain = await SupplyChain.deployed()
         
         // Declare and Initialize a variable for event
-        var eventEmitted = false
+       // var eventEmitted = false
         
         // Watch the emitted event Harvested()
-        var event = supplyChain.Harvested()
+       /* var event = supplyChain.Harvested()
         await event.watch((err, res) => {
             eventEmitted = true
-        })
+        }) **/
 
         // Mark an item as Harvested by calling function harvestItem()
         await supplyChain.harvestItem(upc, originFarmerID, originFarmName, originFarmInformation, originFarmLatitude, originFarmLongitude, productNotes)
