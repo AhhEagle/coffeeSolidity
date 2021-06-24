@@ -1,6 +1,10 @@
 pragma solidity ^0.4.24;
+import '../coffeeaccesscontrol/ConsumerRole';
+import '../coffeeaccesscontrol/RetailerRole';
+import '../coffeeaccesscontrol/DistributorRole';
+import '../coffeecore/Ownable'
 // Define a contract 'Supplychain'
-contract SupplyChain {
+contract SupplyChain is Ownable, ConsumerRole, RetailerRole, DistributorRole {
 
   // Define 'owner'
   address owner;
@@ -96,43 +100,43 @@ contract SupplyChain {
 
   // Define a modifier that checks if an item.state of a upc is Processed
   modifier processed(uint _upc) {
-
+    require(items[_upc].itemState == State.Processed);
     _;
   }
   
   // Define a modifier that checks if an item.state of a upc is Packed
   modifier packed(uint _upc) {
-
+    require(items[_upc].itemState == State.Packed);
     _;
   }
 
   // Define a modifier that checks if an item.state of a upc is ForSale
   modifier forSale(uint _upc) {
-
+    require(items[_upc].itemState == State.ForSale);
     _;
   }
 
   // Define a modifier that checks if an item.state of a upc is Sold
   modifier sold(uint _upc) {
-
+        require(items[_upc].itemState == State.Sold);
     _;
   }
   
   // Define a modifier that checks if an item.state of a upc is Shipped
   modifier shipped(uint _upc) {
-
+        require(items[_upc].itemState == State.Shipped);
     _;
   }
 
   // Define a modifier that checks if an item.state of a upc is Received
   modifier received(uint _upc) {
-
+        require(items[_upc].itemState == State.Received);
     _;
   }
 
   // Define a modifier that checks if an item.state of a upc is Purchased
   modifier purchased(uint _upc) {
-    
+        require(items[_upc].itemState == State.Purchased);
     _;
   }
 
@@ -156,49 +160,73 @@ contract SupplyChain {
   function harvestItem(uint _upc, address _originFarmerID, string _originFarmName, string _originFarmInformation, string  _originFarmLatitude, string  _originFarmLongitude, string  _productNotes) public 
   {
     // Add the new item as part of Harvest
+    items[_upc] = Item({
+      sku: sku,
+      upc: _upc,
+      ownerID: _originFarmerID,
+      originFarmerID: _originFarmerID,
+      originFarmName: _originFarmName,
+      originFarmInformation: _originFarmInformation,
+      originFarmLatitude: _originFarmLatitude,
+      originFarmLongitude: _originFarmLongitude,
+      productID: sku + _upc,
+      productNotes: _productNotes,
+      productPrice: 0,
+      itemState: State.Harvested,
+      distributorID: address(0),
+      retailerID: address(0),
+      consumerID: address(0) 
+    })
     
     // Increment sku
     sku = sku + 1;
     // Emit the appropriate event
-    
+    emit Harvested(_upc)
   }
 
   // Define a function 'processtItem' that allows a farmer to mark an item 'Processed'
   function processItem(uint _upc) public 
   // Call modifier to check if upc has passed previous supply chain stage
+  harvested(_upc)
   
   // Call modifier to verify caller of this function
+  verifyCaller(items[_upc].originFarmerID)
   
   {
     // Update the appropriate fields
-    
+    items[_upc].itemState = State.Processed;
     // Emit the appropriate event
-    
+    emit Processed(_upc)
   }
 
   // Define a function 'packItem' that allows a farmer to mark an item 'Packed'
   function packItem(uint _upc) public 
   // Call modifier to check if upc has passed previous supply chain stage
-  
+  processed(_upc)
   // Call modifier to verify caller of this function
+  verifyCaller(items[_upc].originFarmerID)
   
   {
     // Update the appropriate fields
-    
+    items[_upc].itemState = State.Packed;
     // Emit the appropriate event
+    emit Packed(_upc);
     
   }
 
   // Define a function 'sellItem' that allows a farmer to mark an item 'ForSale'
   function sellItem(uint _upc, uint _price) public 
   // Call modifier to check if upc has passed previous supply chain stage
-  
+  packed(_upc);
   // Call modifier to verify caller of this function
-  
+  verifyCaller(items[_upc].originFarmerID)
   {
     // Update the appropriate fields
-    
+    items[_upc].itemState = State.ForSale;
+    items[_upc].productPrice = _price;
     // Emit the appropriate event
+
+    emit ForSale(_upc);
     
   }
 
