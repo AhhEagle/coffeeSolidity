@@ -1,5 +1,6 @@
 # COFFEE SUPPLY CHAIN ON BLOCKCHAIN
-This is a udacity nanodegree project that aims at tracking the coffee supply from planting to the enventual consumption by the consumer
+This is a udacity nanodegree project that aims at tracking the coffee supply from planting to the enventual consumption by the consumer.
+The project utilises a decentalised architecture 
 
 ### Dependencies 
 The following are the dependencies utilised in this project:
