@@ -18,7 +18,7 @@ Truffle: Truffle is a development environment, asset pipiline and as well as a t
 Web3: Web3 was used to interact with the rinkeby ethereum nodeUpdat
 
 ### Run the application
-1. Clone the repository using `git clone url`
+1. Clone the repository using `git clone <url>`
 2. Change directory to app and install all modules listed using
    `npm install`
 3 Start Truffle by running
